@@ -12,6 +12,13 @@ def liste_nombres_aleatoires(taille: int, minimum: int, maximum: int) -> list:
     """
     return [nombre_aleatoire(minimum, maximum) for _ in range(taille)]
 
+def somme_nombres_aleatoires(taille: int, minimum: int, maximum: int) -> int:
+    """
+    Génère une liste de nombres aléatoires et retourne leur somme.
+    """
+    return sum(liste_nombres_aleatoires(taille, minimum, maximum))
+
 # Exemple d'utilisation
 print(nombre_aleatoire(1, 100))
 print(liste_nombres_aleatoires(5, 1, 100))
+print(somme_nombres_aleatoires(5, 1, 100))
