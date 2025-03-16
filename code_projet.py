@@ -1,4 +1,5 @@
-from random import randint, shuffle
+from random import randint, shuffle, seed
+seed(1)
 
 
 class Acheteur:
