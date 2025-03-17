@@ -133,6 +133,27 @@ def simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs):
         liste_acheteurs[i].avant_tick()
 
     vendeur.avant_tick()
+    enregistrer_resultats(vendeur, liste_acheteurs, len(vendeur.recettes))
     continuer = input("Continuer ? : (Y/N) : ")
     if continuer == "Y":
         simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs)
+
+
+
+def enregistrer_resultats(vendeur, liste_acheteurs, iteration):
+    data = {
+        "iteration": iteration,
+        "vendeur": {
+            "prix_courant": vendeur.prix_courant,
+            "recette_du_jour": vendeur.recettes[-1] if vendeur.recettes else 0,
+            "stock_restant": vendeur.get_stock()
+        },
+        "acheteurs": [
+            {"id": i, "humeur": acheteur.humeur, "budget_restant": acheteur.brs}
+            for i, acheteur in enumerate(liste_acheteurs)
+        ]
+    }
+
+    with open("resultats.json", "a", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+        file.write(",\n")
