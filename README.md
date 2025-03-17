@@ -1,2 +1,2 @@
 # README
-Et non enfaite y'a rien
+Pour les fonctions de tests mettez les dans le fichier test pour pas trop "polluer" le code principal svp.
