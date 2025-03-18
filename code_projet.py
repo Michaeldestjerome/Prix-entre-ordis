@@ -1,6 +1,7 @@
 from random import randint, shuffle, seed
-seed(1)
-
+x=randint(1,50000000000000000)
+seed(x)
+print("Seed = ",x)
 
 class Acheteur:
     def __init__(self, salaire, prix_limite, besoins):
