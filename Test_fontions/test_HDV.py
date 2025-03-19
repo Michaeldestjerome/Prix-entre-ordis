@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pytest
 from ordres_HDV import Acheteur, Vendeur, Ordre_achat, Ordre_vente, HDV
 
