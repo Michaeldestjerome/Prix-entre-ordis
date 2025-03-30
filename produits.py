@@ -7,11 +7,15 @@ class Produits:
         self.quantite = quantite  # Stock total disponible, pour une personne aussi bien que dans l'HDV
 
     def ajouter_stock(self, quantite):
+        if quantite <0:
+            raise ValueError("Il faut ajouter un nombre positif de produits!")
         self.quantite += quantite
 
     def retirer_stock(self, quantite):
         if quantite > self.quantite:
             raise ValueError("Stock insuffisant !")
+        if quantite < 0:
+            raise ValueError("Il faut retirer un nombre positif de produits!")
         self.quantite -= quantite
 
     def __str__(self):
