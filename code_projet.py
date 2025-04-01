@@ -4,7 +4,8 @@ x=randint(1,50000000000000000)
 seed(x)
 print("Seed = ",x)
 
-
+if os.path.exists("resultats.json") ==True:
+    os.remove("resultats.json")
 
 class Acheteur:
     def __init__(self, salaire, prix_limite, besoins):
@@ -141,9 +142,14 @@ def simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs):
     continuer = input("Continuer ? : (Y/N) : ")
     if continuer == "Y":
         simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs)
+    else:
+        with open("resultats.json", "a", encoding="utf-8") as file:
+        json.dump(data_fin, file, indent=4, ensure_ascii=False)
 
 
 
+data_fin={}
+data_fin["seed"]=x
 def enregistrer_resultats(vendeur, liste_acheteurs, iteration):
     data = {
         "iteration": iteration,
@@ -157,7 +163,4 @@ def enregistrer_resultats(vendeur, liste_acheteurs, iteration):
             for i, acheteur in enumerate(liste_acheteurs)
         ]
     }
-
-    with open("resultats.json", "a", encoding="utf-8") as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
-        file.write(",\n")
+    data_fin[iteration]=data
