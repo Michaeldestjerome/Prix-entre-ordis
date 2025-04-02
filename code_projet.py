@@ -1,5 +1,7 @@
 from random import randint, shuffle, seed
 import json
+import os
+
 x=randint(1,50000000000000000)
 seed(x)
 print("Seed = ",x)
@@ -144,7 +146,7 @@ def simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs):
         simulation_1_vendeur_n_acheteur(vendeur, liste_acheteurs)
     else:
         with open("resultats.json", "a", encoding="utf-8") as file:
-        json.dump(data_fin, file, indent=4, ensure_ascii=False)
+            json.dump(data_fin, file, indent=4, ensure_ascii=False)
 
 
 
